@@ -10,7 +10,7 @@ plt.yticks(np.arange(1, 21))
 for i in range(1, 57):
     plt.scatter([i]*5, rank[i-1, :], color='black')
 plt.grid()
-plt.savefig('output/chi-square.png')
+plt.savefig('graphs/chi-square.png')
 plt.show()
 plt.close()
 
@@ -23,7 +23,7 @@ plt.yticks(np.arange(1, 21))
 for i in range(1, 57):
     plt.scatter([i]*5, rank[i-1, :], color='black')
 plt.grid()
-plt.savefig('output/gain_ratio.png')
+plt.savefig('graphs/gain_ratio.png')
 plt.show()
 plt.close()
 
@@ -36,7 +36,7 @@ plt.yticks(np.arange(1, 21))
 for i in range(1, 57):
     plt.scatter([i]*5, rank[i-1, :], color='black')
 plt.grid()
-plt.savefig('output/gini_split.png')
+plt.savefig('graphs/gini_split.png')
 plt.show()
 plt.close()
 
@@ -49,7 +49,7 @@ plt.yticks(np.arange(1, 21))
 for i in range(1, 57):
     plt.scatter([i]*5, rank[i-1, :], color='black')
 plt.grid()
-plt.savefig('output/info_gain.png')
+plt.savefig('graphs/info_gain.png')
 plt.show()
 plt.close()
 
@@ -62,6 +62,6 @@ plt.yticks(np.arange(1, 21))
 for i in range(1, 57):
     plt.scatter([i]*5, rank[i-1, :], color='black')
 plt.grid()
-plt.savefig('output/mis_error.png')
+plt.savefig('graphs/mis_error.png')
 plt.show()
 plt.close()

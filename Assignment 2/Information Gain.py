@@ -49,7 +49,7 @@ def rank(result):
 
 
 # code to edit csv
-info_gain = np.zeros((56, 20))
+info_gain = np.zeros((56, 25))
 fileloc = "output/"
 for i in range(1, 57):
     print(i)
@@ -57,8 +57,7 @@ for i in range(1, 57):
     data = np.genfromtxt(fname, delimiter=',')
     for j in range(0, 20):
         info_gain[i-1, j] = info_gain_cal(data[:, j], data[:, -1])
-    frank = rank(info_gain)
+    frank = rank(info_gain[:, :20])
+    info_gain[:, 20:] = frank[:, :5]
 fname = fileloc+'info_gain.csv'
 np.savetxt(fname, info_gain, delimiter=',', fmt='%f')
-fname = fileloc+'info_gain_rank.csv'
-np.savetxt(fname, frank, delimiter=',', fmt='%d')

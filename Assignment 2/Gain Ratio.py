@@ -51,7 +51,7 @@ def rank(result):
 
 
 # code to edit csv
-gain_ratio = np.zeros((56, 20))
+gain_ratio = np.zeros((56, 25))
 fileloc = "output/"
 for i in range(1, 57):
     print(i)
@@ -59,8 +59,7 @@ for i in range(1, 57):
     data = np.genfromtxt(fname, delimiter=',')
     for j in range(0, 20):
         gain_ratio[i-1, j] = gain_ratio_cal(data[:, j], data[:, -1])
-    frank = rank(gain_ratio)
+    frank = rank(gain_ratio[:, :20])
+    gain_ratio[:, 20:] = frank[:, :5]
 fname = fileloc+'gain_ratio.csv'
 np.savetxt(fname, gain_ratio, delimiter=',', fmt='%f')
-fname = fileloc+'gain_ratio_rank.csv'
-np.savetxt(fname, frank, delimiter=',', fmt='%d')

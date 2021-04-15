@@ -42,7 +42,7 @@ def rank(result):
 
 
 # code to edit csv
-misclassification_err = np.zeros((56, 20))
+misclassification_err = np.zeros((56, 25))
 fileloc = "output/"
 for i in range(1, 57):
     print(i)
@@ -50,8 +50,7 @@ for i in range(1, 57):
     data = np.genfromtxt(fname, delimiter=',')
     for j in range(0, 20):
         misclassification_err[i-1, j] = mis_error_cal(data[:, j], data[:, -1])
-    frank = rank(misclassification_err)
+    frank = rank(misclassification_err[:, :20])
+    misclassification_err[:, 20:] = frank[:, :5]
 fname = fileloc+'mis_error.csv'
 np.savetxt(fname, misclassification_err, delimiter=',', fmt='%f')
-fname = fileloc+'mis_error_rank.csv'
-np.savetxt(fname, frank, delimiter=',', fmt='%d')

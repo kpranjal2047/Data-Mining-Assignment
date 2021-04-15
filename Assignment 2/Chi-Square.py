@@ -20,7 +20,7 @@ def chaid_cal(f, c):
     val_0 = n00+n10
     val_1 = n01+n11
 
-    if val_0 == 0 or val_1 == 0:
+    if val_0 == 0 or val_1 == 0 or cl_0 == 0 or cl_1 == 0:
         return float('inf')
 
     exp_00 = cl_0*val_0/tot
@@ -45,7 +45,7 @@ def rank(result):
 
 
 # code to edit csv
-chaidval = np.zeros((56, 20))
+chaidval = np.zeros((56, 25))
 fileloc = "output/"
 for i in range(1, 57):
     print(i)
@@ -53,8 +53,7 @@ for i in range(1, 57):
     data = np.genfromtxt(fname, delimiter=',')
     for j in range(0, 20):
         chaidval[i-1, j] = chaid_cal(data[:, j], data[:, -1])
-    frank = rank(chaidval)
-fname = fileloc+'chaid.csv'
+    frank = rank(chaidval[:, :20])
+    chaidval[:, 20:] = frank[:, :5]
+fname = fileloc+'chi-square.csv'
 np.savetxt(fname, chaidval, delimiter=',', fmt='%f')
-fname = fileloc+'chaid_rank.csv'
-np.savetxt(fname, frank, delimiter=',', fmt='%d')

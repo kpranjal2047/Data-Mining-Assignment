@@ -42,7 +42,7 @@ def rank(result):
 
 
 # code to edit csv
-gini_split = np.zeros((56, 20))
+gini_split = np.zeros((56, 25))
 fileloc = "output/"
 for i in range(1, 57):
     print(i)
@@ -50,8 +50,7 @@ for i in range(1, 57):
     data = np.genfromtxt(fname, delimiter=',')
     for j in range(0, 20):
         gini_split[i-1, j] = gini_split_cal(data[:, j], data[:, -1])
-    frank = rank(gini_split)
+    frank = rank(gini_split[:, :20])
+    gini_split[:, 20:] = frank[:, :5]
 fname = fileloc+'gini_split.csv'
 np.savetxt(fname, gini_split, delimiter=',', fmt='%f')
-fname = fileloc+'gini_split_rank.csv'
-np.savetxt(fname, frank, delimiter=',', fmt='%d')

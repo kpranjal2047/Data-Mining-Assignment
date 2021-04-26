@@ -1,3 +1,5 @@
+# AN IMPLEMENTATION OF INFORMATION GAIN VALUE CALCULATION FROM SCRATCH
+
 import numpy as np
 from math import log2
 

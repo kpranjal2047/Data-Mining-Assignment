@@ -1,3 +1,5 @@
+# AN IMPLEMENTATION OF GAIN RATIO VALUE CALCULATION FROM SCRATCH
+
 import numpy as np
 from math import log2
 
